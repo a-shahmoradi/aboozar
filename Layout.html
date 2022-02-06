@@ -1,0 +1,42 @@
+    {% load static %}
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>سامانه فروش بلیط کنسرت</title>
+        
+            <link rel="StyleSheet" type="text/css" href="{% static 'ticketSales/css/bootstrap.rtl.css' %}">
+            <link rel="StyleSheet" type="text/css" href="{% static 'ticketSales/css/fontawesome.min.css' %}">
+            <link rel="StyleSheet" type="text/css" href="{% static 'ticketSales/css/style.css' %}">
+        </head>
+        <body>
+                 
+            <div class="container">
+                <div class="row box">
+                    <h3>{% block titlepage %} {% endblock%}</h3>
+                    <ul class="btnul">
+                    {% if user.is_authenticated %}
+                        <li><a class="btn btn-danger" href="/Accounts/Logout/">خروج</a></li>
+                        <li><a class="btn btn-success" href="/Accounts/Profile/">پروفایل</a></li>
+                    {% else %}
+                        <li><a class="btn btn-danger" href="/Accounts/Register/">ثبت نام</a></li>
+                        <li><a class="btn btn-success" href="/Accounts/Login/">ورود</a></li>
+                    {% endif %}
+                        <li><a class="btn btn-warning" href="/TicketSales/concert/list">صفحه اصلی</a></li>
+                        <li><a class="btn btn-danger" href="/TicketSales/location/list" >لیست سالن ها</a></li>
+                        <li><a class="btn btn-primary" href="/TicketSales/time/list" >لیست سانس ها</a></li>
+                    </ul>
+                </div>
+              
+                <div dir="rtl" class="row">
+                    
+                      {% block mainContent %}{% endblock%}
+                   
+                </div>
+            </div>
+              
+        </body>
+        <script src="{% static 'ticketSales/js/jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'ticketSales/js/bootstrap.bundle.js' %}"></script>
+        <script src="{% static 'ticketSales/js/fontawesome.min.js' %}"></script>
+        <script src="{% static 'ticketSales/js/myMain.js' %}"></script>
+    </html>
